@@ -7,8 +7,21 @@
 		{% endif %}
 	</head>
 	<body>
-		<div>Microblog: <a href="/index/">Home</a></div>
+		<div>
+		<span>Microblog:</span>
+		<span><a href="/index/">Home</a></span>
+		<span><a href="/login/">Login</a></span>		
+		</div>
 		<hr>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+				{% for message in messages %}
+					<li>{{ message }}</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
 		{% block content %}{% endblock %}
 		<!-- Content is the name of the unique block, which inheritance -->
 	</body>
